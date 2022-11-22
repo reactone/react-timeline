@@ -35,6 +35,7 @@ export const Cursor: FC<CursorProps> = ({
   deltaScrollLeft,
   onCursorDragStart,
   onCursorDragEnd,
+  onCursorDrag
 }) => {
   const rowRnd = useRef<RowRndApi>();
   const [draggingLeft, setDraggingLeft] = useState<undefined | number>();
@@ -85,7 +86,9 @@ export const Cursor: FC<CursorProps> = ({
         onCursorDragEnd && onCursorDragEnd(parserPixelToTime(draggingLeft + scrollLeft, { startLeft, scale, scaleWidth }));
       }}
       onDrag={({ left }, scroll = 0) => {
+        onCursorDrag && cursorTime && onCursorDrag(cursorTime)
         const scrollLeft = scrollSync.current.state.scrollLeft;
+       // console.log(cursorTime)
 
         if (!scroll || scrollLeft === 0) {
           // 拖拽时，如果当前left < left min，将数值设置为 left min

@@ -16,6 +16,9 @@ const TimelineEditor = () => {
         editorData={data}
         effects={mockEffect}
         hideCursor={false}
+        onCursorDrag = {(time) => {
+          console.log('yo', time)
+          } }
         getActionRender={(action) => {
           if(action.id === 'action10') {
             return <div className="prompt">只能拖拽左侧缩放</div>

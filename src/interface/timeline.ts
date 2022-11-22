@@ -184,6 +184,7 @@ export interface EditData {
    * @description cursor结束拖拽事件
    */
   onCursorDragEnd?: (time: number) => void;
+  onCursorDrag?: (time: number) => void;
 }
 
 export interface TimelineState {
